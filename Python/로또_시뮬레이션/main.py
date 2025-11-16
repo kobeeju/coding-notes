@@ -31,27 +31,21 @@ def count_matching_numbers(numbers, winning_numbers):
 
 # 당첨금 확인
 def check(numbers, winning_numbers):
-    normal_winning_numbers = winning_numbers[:6]
-    bonus_winning_numbers = winning_numbers[6]
-    prize = 0
-
-    count = 0
-    for number in numbers:
-        if number in normal_winning_numbers:
-            count += 1
+    count = count_matching_numbers(numbers, winning_numbers[:6])
+    bonus_count = count_matching_numbers(numbers, winning_numbers[6:])
 
     if count == 6:
-        prize = 1000000000
-    elif count == 5 and bonus_winning_numbers in numbers:
-        prize = 50000000
+        return 1000000000
+    elif count == 5 and bonus_count == 1:
+        return 50000000
     elif count == 5:
-        prize = 1000000
+        return 1000000
     elif count == 4:
-        prize = 50000
+        return 50000
     elif count == 3:
-        prize = 5000
-
-    return prize
+        return 5000
+    else:
+        return 0
 
 
 # 테스트 코드
