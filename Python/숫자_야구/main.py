@@ -48,17 +48,17 @@ def get_score(guesses, solution):
 
 
 if __name__ == "__main__":
-    solution = generate_numbers()
-    count = 0
-    strike = 0
-    ball = 0
+    ANSWER = generate_numbers()
+    tries = 0
 
-    while strike < 3:
-        print("숫자 3개를 하나씩 차례대로 입력하세요.")
+    while True:
+        guess = take_guess()
+        strike, ball = get_score(guess, ANSWER)
 
-        guesses = take_guess()
-        strike, ball = get_score(guesses, solution)
+        print(f"{strike}S {ball}B")
+        tries += 1
 
-        print(f"{strike}S {ball}B\n")
-        count += 1
-    print(f"축하합니다. {count}번 만에 숫자 3개의 값과 위치를 모두 맞히셨습니다.")
+        if strike == 3:
+            break
+
+    print(f"축하합니다. {tries}번 만에 세 숫자의 값과 위치를 모두 맞히셨습니다.")
