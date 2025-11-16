@@ -47,15 +47,18 @@ def get_score(guesses, solution):
     return strike_count, ball_count
 
 
-# 테스트 코드
-s_1, b_1 = get_score([2, 7, 4], [2, 4, 7])
-print(s_1, b_1)
+if __name__ == "__main__":
+    solution = generate_numbers()
+    count = 0
+    strike = 0
+    ball = 0
 
-s_2, b_2 = get_score([7, 2, 4], [2, 4, 7])
-print(s_2, b_2)
+    while strike < 3:
+        print("숫자 3개를 하나씩 차례대로 입력하세요.")
 
-s_3, b_3 = get_score([0, 4, 7], [2, 4, 7])
-print(s_3, b_3)
+        guesses = take_guess()
+        strike, ball = get_score(guesses, solution)
 
-s_4, b_4 = get_score([2, 4, 7], [2, 4, 7])
-print(s_4, b_4)
+        print(f"{strike}S {ball}B\n")
+        count += 1
+    print(f"축하합니다. {count}번 만에 숫자 3개의 값과 위치를 모두 맞히셨습니다.")
