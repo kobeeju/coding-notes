@@ -15,16 +15,8 @@ def generate_numbers(n):
 
 # 일반 당첨 번호 6개와 보너스 번호 1개 리스트 리턴
 def draw_winning_numbers():
-    winning_numbers = sorted(generate_numbers(6))
-
-    bonus_number = 0
-    while True:
-        bonus_number = generate_numbers(1)
-        if bonus_number not in winning_numbers:
-            winning_numbers += bonus_number
-            break
-
-    return winning_numbers
+    winning_numbers = generate_numbers(7)
+    return sorted(winning_numbers[:6]) + winning_numbers[6:]
 
 
 # 테스트 코드
