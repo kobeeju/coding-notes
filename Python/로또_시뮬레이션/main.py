@@ -19,5 +19,16 @@ def draw_winning_numbers():
     return sorted(winning_numbers[:6]) + winning_numbers[6:]
 
 
+# 일치하는 당첨 번호의 개수 리턴
+def count_matching_numbers(numbers, winning_numbers):
+    count = 0
+    for number in numbers:
+        if number in winning_numbers:
+            count += 1
+
+    return count
+
+
 # 테스트 코드
-print(draw_winning_numbers())
+print(count_matching_numbers([2, 7, 11, 14, 25, 40], [2, 11, 13, 14, 30, 35]))
+print(count_matching_numbers([2, 7, 11, 14, 25, 40], [14]))
