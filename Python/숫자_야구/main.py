@@ -38,14 +38,11 @@ def get_score(guesses, solution):
     strike_count = 0
     ball_count = 0
 
-    for guess in guesses:
-        if guess in solution:
-            if guesses.index(guess) == solution.index(guess):
-                strike_count += 1
-            else:
-                ball_count += 1
-        else:
-            continue
+    for i in range(len(guesses)):
+        if guesses[i] == solution[i]:
+            strike_count += 1
+        elif guesses[i] in solution:
+            ball_count += 1
 
     return strike_count, ball_count
 
